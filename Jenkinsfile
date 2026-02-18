@@ -24,9 +24,9 @@ pipeline {
                 sh """
                     export PATH="/tmp:\$PATH"
                     if [ -f /tmp/docker ]; then
-                        DOCKER_BUILDKIT=1 /tmp/docker build --rm -t ${env.DOCKER_IMAGE} -f .deploy/build/Dockerfile .
+                        /tmp/docker build --rm -t ${env.DOCKER_IMAGE} -f .deploy/build/Dockerfile .
                     else
-                        DOCKER_BUILDKIT=1 docker build --rm -t ${env.DOCKER_IMAGE} -f .deploy/build/Dockerfile .
+                        docker build --rm -t ${env.DOCKER_IMAGE} -f .deploy/build/Dockerfile .
                     fi
                 """
             }
