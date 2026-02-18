@@ -23,6 +23,7 @@ RUN npm run build
 # Stage 2: Serve with nginx
 # ===================================================
 FROM nginx:alpine
+RUN apk add --no-cache wget
 # Copy built site from builder
 COPY --from=builder /app/build /usr/share/nginx/html
 # Custom nginx config

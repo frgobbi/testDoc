@@ -15,11 +15,11 @@ services:
       traefik.http.routers.doc-website.tls: true
       traefik.http.routers.doc-website.tls.certresolver: letsencrypt
     healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost/"]
-      interval: ${HEALTHCHECK_INTERVAL:-40s}
-      timeout: ${HEALTHCHECK_TIMEOUT:-10s}
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/ || exit 1"]
+      interval: 10s
+      timeout: 5s
       retries: 3
-      start_period: 5s
+      start_period: 10s
     restart: always
     profiles:
       - app
