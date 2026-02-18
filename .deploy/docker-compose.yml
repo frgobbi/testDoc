@@ -14,7 +14,7 @@ services:
       traefik.http.routers.doc-website.entrypoints: web-secure
       traefik.http.routers.doc-website.tls: true
       traefik.http.routers.doc-website.tls.certresolver: letsencrypt
-      # traefik.http.routers.doc-website.middlewares: doc-auth   # riattiva per proteggere con Authelia
+      traefik.http.routers.doc-website.middlewares: doc-auth
     healthcheck:
       test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/ || exit 1"]
       interval: 10s
