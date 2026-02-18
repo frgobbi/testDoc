@@ -2,7 +2,7 @@
 /node_modules
 /.idea
 .idea/*
-
+.docker/*
 # Production
 /build
 
