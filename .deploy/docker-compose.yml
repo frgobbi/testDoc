@@ -1,0 +1,32 @@
+# Docusaurus static site - Traefik + Let's Encrypt
+# Nome progetto univoco: evita conflitti con lo stack Laravel (stesso host)
+name: doc-website
+
+services:
+  app:
+    container_name: doc-website-app
+    image: ${DOCKER_IMAGE}
+    labels:
+      traefik.enable: true
+      traefik.docker.network: proxy
+      traefik.http.services.doc-website.loadbalancer.server.port: 80
+      traefik.http.routers.doc-website.rule: Host(`doc.polisportivacastelvieto.it`)
+      traefik.http.routers.doc-website.entrypoints: web-secure
+      traefik.http.routers.doc-website.tls: true
+      traefik.http.routers.doc-website.tls.certresolver: letsencrypt
+      # traefik.http.routers.doc-website.middlewares: doc-auth   # riattiva per proteggere con Authelia
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: always
+    profiles:
+      - app
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
