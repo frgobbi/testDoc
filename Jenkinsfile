@@ -40,6 +40,7 @@ pipeline {
                         sh '''
                             export PATH="/tmp:$PATH"
                             export DOCKER_IMAGE=''' + env.DOCKER_IMAGE + '''
+                            export COMPOSE_PROJECT_NAME=doc-website
                             export HEALTHCHECK_INTERVAL=${HEALTHCHECK_INTERVAL:-40s}
                             export HEALTHCHECK_TIMEOUT=${HEALTHCHECK_TIMEOUT:-10s}
                             if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then

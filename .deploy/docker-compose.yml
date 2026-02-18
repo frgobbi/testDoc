@@ -1,4 +1,7 @@
 # Docusaurus static site - Traefik + Let's Encrypt
+# Nome progetto univoco: evita conflitti con lo stack Laravel (stesso host)
+name: doc-website
+
 services:
   app:
     image: ${DOCKER_IMAGE}
