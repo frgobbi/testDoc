@@ -94,7 +94,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          to: '/logout',
+          href: 'https://auth.polisportivacastelvieto.it/logout',
           label: 'Esci',
           position: 'right',
           title: 'Esci e chiudi la sessione Authelia',
