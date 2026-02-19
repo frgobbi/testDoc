@@ -98,6 +98,7 @@ const config: Config = {
           label: 'Esci',
           position: 'right',
           title: 'Esci e chiudi la sessione Authelia',
+          className: 'navbar__link--no-icon',
         },
       ],
     },
