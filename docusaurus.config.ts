@@ -93,6 +93,12 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          href: 'https://auth.polisportivacastelvieto.it/api/logout',
+          label: 'Esci',
+          position: 'right',
+          title: 'Esci e chiudi la sessione Authelia',
+        },
       ],
     },
     footer: {
